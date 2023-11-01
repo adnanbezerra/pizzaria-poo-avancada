@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import listas.Fila;
 import objetos.Ingrediente;
 
 class Main {
@@ -11,6 +12,7 @@ class Main {
 
   public static void main(String[] args) {
 	  Scanner sc = new Scanner(System.in);
+    Fila pedidos = new Fila();
     ArrayList<Ingrediente> ingredientes = new ArrayList<>();
     ingredientes.add(new Ingrediente("Pepperoni"));
     ingredientes.add(new Ingrediente("Frango com catupiry"));
@@ -54,5 +56,11 @@ class Main {
 	  System.out.println("6. Sair.");
 		System.out.println(TRAVESSAO);
 		System.out.println("Digite o código do comando: ");        
+	}
+
+  public static void imprimeEntreTravessao(String imprimir) {
+	  System.out.println(TRAVESSAO);
+	  System.out.println(imprimir);
+		System.out.println(TRAVESSAO);
 	}
 }
