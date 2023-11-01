@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import objetos.Ingrediente;
 
 class Main {
   public static final String TRAVESSAO = "--------------------------";
@@ -8,23 +11,27 @@ class Main {
 
   public static void main(String[] args) {
 	  Scanner sc = new Scanner(System.in);
-	  System.out.println("Bem-vindo ao Comério!");
+    ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+    ingredientes.add(new Ingrediente("Pepperoni"));
+    ingredientes.add(new Ingrediente("Frango com catupiry"));
+    ingredientes.add(new Ingrediente("Abacaxi"));
 	  String comando;
 
+    System.out.println("Bem-vindo ao Comério!");
     while(true) {
       listarComandos();
       comando = sc.nextLine();
 
       if (comando.equals("1")) {
-        // TODO
+        // TODO - Criar uma pizza
       } else if (comando.equals("2")) {
-        // TODO
+        // TODO - Criar um novo pedido
       } else if (comando.equals("3")) {
-        // TODO
+        // TODO - Servir um pedido
       } else if (comando.equals("4")) {
-        // TODO
+        // TODO - Adicionar ingredientes
       } else if (comando.equals("5")) {
-        // TODO
+        // TODO - Estatísticas dos pedidos
       } else if (comando.equals("6")) { 
         System.out.println("Até mais ver!");
 	      break;
