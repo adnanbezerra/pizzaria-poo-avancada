@@ -1,5 +1,5 @@
 package listas;
 
-public class Fila {
+public class Fila<E> {
   
 }

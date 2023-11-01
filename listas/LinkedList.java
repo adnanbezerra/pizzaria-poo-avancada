@@ -1,5 +1,5 @@
 package listas;
 
-public class LinkedList {
+public class LinkedList<E> {
   
 }

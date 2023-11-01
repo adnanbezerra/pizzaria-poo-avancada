@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import listas.Fila;
 import objetos.Ingrediente;
+import objetos.Pedido;
 
 class Main {
   public static final String TRAVESSAO = "--------------------------";
@@ -12,7 +13,7 @@ class Main {
 
   public static void main(String[] args) {
 	  Scanner sc = new Scanner(System.in);
-    Fila pedidos = new Fila();
+    Fila<Pedido> pedidos = new Fila<Pedido>();
     ArrayList<Ingrediente> ingredientes = new ArrayList<>();
     ingredientes.add(new Ingrediente("Pepperoni"));
     ingredientes.add(new Ingrediente("Frango com catupiry"));
