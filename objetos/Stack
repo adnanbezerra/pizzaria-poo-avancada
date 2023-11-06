@@ -1,0 +1,28 @@
+package objetos;
+
+public class Stack<E> extends LinkedList{
+
+	private Stack<E> lista = new Stack<>();
+	
+	
+	public void push(E elemento) {
+		lista.addFirst(elemento);
+	}
+	
+	public E pop() {
+		return (E) lista.removeFirst();
+	}
+	
+	public boolean isEmpty() {
+		return lista.isEmpty();
+	}
+	
+	public int size() {
+		return lista.size();
+	}
+	
+	public E top() {
+	return lista.first();	
+	}
+	
+}
