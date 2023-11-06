@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,13 +16,14 @@ class Main {
 
   public static void main(String[] args) {
 	  Scanner sc = new Scanner(System.in);
-    // Fila<Pedido> pedidos = new Fila<Pedido>();
+    PriorityQueue<Pedido> pedidos = new PriorityQueue<Pedido>();
     ArrayList<Ingrediente> ingredientes = new ArrayList<>();
     ingredientes.add(new Ingrediente("Pepperoni"));
     ingredientes.add(new Ingrediente("Frango com catupiry"));
     ingredientes.add(new Ingrediente("Abacaxi"));
 	  String comando;
     Stack<Ingrediente> pizzas = new Stack<>();
+    ArrayList<Pedido> pedidosServidos = new ArrayList<>();
 
     System.out.println("Bem-vindo à Pizzaria!");
     while(true) {
@@ -30,7 +33,7 @@ class Main {
       if (comando.equals("1")) {
         // TODO - Criar uma pizza
         // FALTA implementar a nossa Fila personalizada
-        
+
         System.out.println("Os ingredientes disponíveis:");
         for (Ingrediente pizzaIngredientes : ingredientes) {
             System.out.println(pizzaIngredientes);
@@ -75,8 +78,28 @@ class Main {
         }
       } else if (comando.equals("2")) {
         // TODO - Criar um novo pedido
+
       } else if (comando.equals("3")) {
-        // TODO - Servir um pedido
+        // Servir um pedido
+        System.out.println("Pedidos feitos:" );
+        for (Pedido pizza : pedidos) {
+            System.out.println(pizza);
+        }
+
+        System.out.println("Digite o numero da mesa do seu pedido:");
+        int pedido = sc.nextInt(); 
+        
+        Pedido pedidoVez = pedidos.peek();
+
+        if (pedidoVez.getNumeroDaMesa() == pedido){
+            Pedido pedidoServido = pedidos.poll();
+            System.out.println("Pedido entregue: " + pedidoServido);
+            pedidosServidos.add(pedidoServido);
+            
+        } else {
+            System.out.println("Não é a vez de retirar seu pedido.As pizzas sao entregues por ordem de pedido.Aguarde!");
+        }
+    
       } else if (comando.equals("4")) {
         // Adicionar ingredientes 
         System.out.println("Qual ingrediente você deseja adicionar?");
@@ -91,6 +114,7 @@ class Main {
 
       } else if (comando.equals("5")) {
         // TODO - Estatísticas dos pedidos
+        
       } else if (comando.equals("6")) { 
         System.out.println("Até mais ver!");
 	      break;
