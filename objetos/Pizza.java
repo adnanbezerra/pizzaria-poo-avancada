@@ -21,4 +21,19 @@ public class Pizza {
 
     return ingredienteRemovendo;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder saida = new StringBuilder();
+
+    for (int i = 0; i < ingredientes.size(); i++) {
+      if (i == 0) {
+        saida.append("Pizza de " + ingredientes.get(i));
+      } else {
+        saida.append(", " + ingredientes.get(i));
+      }
+    }
+
+    return saida.toString();
+  }
 }
