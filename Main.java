@@ -20,7 +20,7 @@ class Main {
     ingredientes.add(new Ingrediente("Abacaxi"));
 	  String comando;
 
-    System.out.println("Bem-vindo ao Comério!");
+    System.out.println("Bem-vindo à Pizzaria!");
     while(true) {
       listarComandos();
       comando = sc.nextLine();
