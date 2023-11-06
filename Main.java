@@ -29,6 +29,8 @@ class Main {
 
       if (comando.equals("1")) {
         // TODO - Criar uma pizza
+        // FALTA implementar a nossa Fila personalizada
+        
         System.out.println("Os ingredientes disponíveis:");
         for (Ingrediente pizzaIngredientes : ingredientes) {
             System.out.println(pizzaIngredientes);
