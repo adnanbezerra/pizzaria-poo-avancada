@@ -3,9 +3,9 @@ package objetos;
 import listas.LinkedList;
 
 public class Pizza {
-  private LinkedList ingredientes;
+  private LinkedList<Ingrediente> ingredientes;
 
   public Pizza() {
-    this.ingredientes = new LinkedList();
+    this.ingredientes = new LinkedList<>();
   }
 }
