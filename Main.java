@@ -13,7 +13,7 @@ class Main {
 
   public static void main(String[] args) {
 	  Scanner sc = new Scanner(System.in);
-    Fila<Pedido> pedidos = new Fila<Pedido>();
+    // Fila<Pedido> pedidos = new Fila<Pedido>();
     ArrayList<Ingrediente> ingredientes = new ArrayList<>();
     ingredientes.add(new Ingrediente("Pepperoni"));
     ingredientes.add(new Ingrediente("Frango com catupiry"));
@@ -32,7 +32,17 @@ class Main {
       } else if (comando.equals("3")) {
         // TODO - Servir um pedido
       } else if (comando.equals("4")) {
-        // TODO - Adicionar ingredientes
+        // Adicionar ingredientes 
+        System.out.println("Qual ingrediente você deseja adicionar?");
+        String nome = sc.nextLine();
+
+        if (ingredientes.contains(new Ingrediente(nome))) {
+            System.out.println("Esse ingrediente já existe");
+        } else {
+            ingredientes.add(new Ingrediente(nome));
+            System.out.println("Ingrediente adicionado!");
+        }
+
       } else if (comando.equals("5")) {
         // TODO - Estatísticas dos pedidos
       } else if (comando.equals("6")) { 

@@ -18,6 +18,12 @@ public class Ingrediente {
   }
 
   @Override
+  public boolean equals(Object outroIngrediente) {
+    Ingrediente convertido = (Ingrediente) outroIngrediente;
+    return nome.equals(convertido.nome);
+  }
+
+  @Override
   public String toString() {
     return "Ingrediente: " + this.nome + ", vezes usado: " + this.vezesUsado;
   }
