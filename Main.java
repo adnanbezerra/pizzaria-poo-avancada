@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import listas.Fila;
@@ -33,15 +34,7 @@ class Main {
         // TODO - Servir um pedido
       } else if (comando.equals("4")) {
         // Adicionar ingredientes 
-        System.out.println("Qual ingrediente você deseja adicionar?");
-        String nome = sc.nextLine();
 
-        if (ingredientes.contains(new Ingrediente(nome))) {
-            System.out.println("Esse ingrediente já existe");
-        } else {
-            ingredientes.add(new Ingrediente(nome));
-            System.out.println("Ingrediente adicionado!");
-        }
 
       } else if (comando.equals("5")) {
         // TODO - Estatísticas dos pedidos
@@ -54,6 +47,18 @@ class Main {
     }
 
     sc.close();
+  }
+
+  public static void adicionarIngrediente(List<Ingrediente> ingredientes, Scanner sc) {
+    System.out.println("Qual ingrediente você deseja adicionar?");
+    String nome = sc.nextLine();
+
+    if (ingredientes.contains(new Ingrediente(nome))) {
+      System.out.println("Esse ingrediente já existe");
+    } else {
+      ingredientes.add(new Ingrediente(nome));
+      System.out.println("Ingrediente adicionado!");
+    }
   }
 
   public static void listarComandos() {
