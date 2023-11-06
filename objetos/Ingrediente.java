@@ -9,6 +9,10 @@ public class Ingrediente {
     this.vezesUsado = 0;
   }
 
+  public String getNome() {
+    return this.nome;
+  }
+
   public void usarIngrediente() {
     this.vezesUsado++;
   }

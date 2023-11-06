@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 import listas.Fila;
 import objetos.Ingrediente;
@@ -20,6 +20,7 @@ class Main {
     ingredientes.add(new Ingrediente("Frango com catupiry"));
     ingredientes.add(new Ingrediente("Abacaxi"));
 	  String comando;
+    Stack<Ingrediente> pizzas = new Stack<>();
 
     System.out.println("Bem-vindo à Pizzaria!");
     while(true) {
@@ -28,6 +29,48 @@ class Main {
 
       if (comando.equals("1")) {
         // TODO - Criar uma pizza
+        System.out.println("Os ingredientes disponíveis:");
+        for (Ingrediente pizzaIngredientes : ingredientes) {
+            System.out.println(pizzaIngredientes);
+        }
+
+        String novaPizza = ""; // Crie uma string para representar a nova pizza.
+
+        int contador = 0;
+        boolean adicionarMaisIngredientes = true;
+
+        while (contador < 4 && adicionarMaisIngredientes) {
+            System.out.println("Digite um ingrediente, dentre os disponíveis: ");
+            String entradaDoUsuario = sc.nextLine();
+
+            Ingrediente ingrediente = new Ingrediente(entradaDoUsuario);
+
+            if (ingredientes.contains(ingrediente)) {
+                novaPizza += ingrediente; // Adicione o ingrediente à string da pizza.
+                contador++;
+
+                System.out.println("Deseja adicionar mais algum ingrediente? Digite 'sim' ou 'nao':");
+                String confirmacao = sc.nextLine();
+
+                if (confirmacao.equals("nao")) {
+                    adicionarMaisIngredientes = false;
+                }
+            } else {
+                System.out.println("Ingrediente inválido. Tente novamente.");
+            }
+        }
+
+        System.out.println("Pizza criada!");
+        
+        if (!pizzas.isEmpty()) {
+            System.out.println("Deseja remover o último ingrediente da pilha? Digite 'sim' ou 'nao':");
+            String removerConfirmacao = sc.nextLine();
+
+            if (removerConfirmacao.equals("sim")) {
+                Ingrediente ultimoIngredienteRemovido = pizzas.pop();
+                System.out.println("O último ingrediente removido foi: " + ultimoIngredienteRemovido.getNome());
+            }
+        }
       } else if (comando.equals("2")) {
         // TODO - Criar um novo pedido
       } else if (comando.equals("3")) {
