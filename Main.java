@@ -7,6 +7,7 @@ import java.util.Stack;
 import listas.Fila;
 import objetos.Ingrediente;
 import objetos.Pedido;
+import objetos.Pizza;
 
 class Main {
   public static final String TRAVESSAO = "--------------------------";
@@ -22,7 +23,7 @@ class Main {
     ingredientes.add(new Ingrediente("Frango com catupiry"));
     ingredientes.add(new Ingrediente("Abacaxi"));
 	  String comando;
-    Stack<Ingrediente> pizzas = new Stack<>();
+    Stack<Pizza> pizzas = new Stack<>();
     ArrayList<Pedido> pedidosServidos = new ArrayList<>();
 
     System.out.println("Bem-vindo à Pizzaria!");
@@ -39,7 +40,7 @@ class Main {
             System.out.println(pizzaIngredientes);
         }
 
-        String novaPizza = ""; // Crie uma string para representar a nova pizza.
+        Pizza novaPizza = new Pizza();
 
         int contador = 0;
         boolean adicionarMaisIngredientes = true;
@@ -51,7 +52,7 @@ class Main {
             Ingrediente ingrediente = new Ingrediente(entradaDoUsuario);
 
             if (ingredientes.contains(ingrediente)) {
-                novaPizza += ingrediente; // Adicione o ingrediente à string da pizza.
+                novaPizza.adicionarIngrediente(ingrediente);
                 contador++;
 
                 System.out.println("Deseja adicionar mais algum ingrediente? Digite 'sim' ou 'nao':");
@@ -65,6 +66,7 @@ class Main {
             }
         }
 
+        pizzas.add(novaPizza);
         System.out.println("Pizza criada!");
         
         if (!pizzas.isEmpty()) {
@@ -72,7 +74,7 @@ class Main {
             String removerConfirmacao = sc.nextLine();
 
             if (removerConfirmacao.equals("sim")) {
-                Ingrediente ultimoIngredienteRemovido = pizzas.pop();
+                Ingrediente ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
                 System.out.println("O último ingrediente removido foi: " + ultimoIngredienteRemovido.getNome());
             }
         }
@@ -114,7 +116,7 @@ class Main {
 
       } else if (comando.equals("5")) {
         // TODO - Estatísticas dos pedidos
-        
+
       } else if (comando.equals("6")) { 
         System.out.println("Até mais ver!");
 	      break;
