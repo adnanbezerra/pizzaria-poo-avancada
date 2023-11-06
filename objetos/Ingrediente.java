@@ -1,4 +1,4 @@
-package pizzaria;
+package objetos;
 
 public class Ingrediente {
 	  private String nome;
