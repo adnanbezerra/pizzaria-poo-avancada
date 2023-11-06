@@ -57,10 +57,6 @@ class Main {
     sc.close();
   }
 
-  public static void adicionarIngrediente(List<Ingrediente> ingredientes, Scanner sc) {
-
-  }
-
   public static void listarComandos() {
 		System.out.println(TRAVESSAO);
 	  System.out.println("Lista dos comandos: ");
