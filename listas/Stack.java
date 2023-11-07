@@ -1,6 +1,6 @@
-package objetos;
+package listas;
 
-public class Stack<E> extends LinkedList{
+public class Stack<E> extends LinkedList<E>{
 
 	private Stack<E> lista = new Stack<>();
 	
@@ -10,7 +10,7 @@ public class Stack<E> extends LinkedList{
 	}
 	
 	public E pop() {
-		return (E) lista.removeFirst();
+		return lista.removeFirst();
 	}
 	
 	public boolean isEmpty() {
