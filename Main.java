@@ -16,10 +16,10 @@ class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ArrayList<Ingrediente> ingredientes = new ArrayList<>();
-		ingredientes.add(new Ingrediente("Pepperoni"));
-		ingredientes.add(new Ingrediente("Frango com catupiry"));
-		ingredientes.add(new Ingrediente("Abacaxi"));
+		ArrayList<Ingrediente> ingredientesDisponiveis = new ArrayList<>();
+		ingredientesDisponiveis.add(new Ingrediente("Pepperoni"));
+		ingredientesDisponiveis.add(new Ingrediente("Frango com catupiry"));
+		ingredientesDisponiveis.add(new Ingrediente("Abacaxi"));
 		Stack<Pizza> pizzas = new Stack<Pizza>();
 		Queue<Pedido> pedidos = new LinkedList<>();
 		String comando;
@@ -33,11 +33,11 @@ class Main {
 				// FALTA implementar a nossa Fila personalizada
 
 				System.out.println("Os ingredientes disponíveis:");
-				for (Ingrediente pizzaIngredientes : ingredientes) {
+				for (Ingrediente pizzaIngredientes : ingredientesDisponiveis) {
 					System.out.println(pizzaIngredientes.getNome());
 				}
 
-				Pizza novaPizza = new Pizza(comando, 0, ingredientes);
+				Pizza novaPizza = new Pizza(comando, 0, ingredientesDisponiveis);
 
 				int contador = 0;
 				boolean adicionarMaisIngredientes = true;
@@ -48,7 +48,7 @@ class Main {
 
 					Ingrediente ingrediente = new Ingrediente(entradaDoUsuario);
 
-					if (ingredientes.contains(ingrediente)) {
+					if (ingredientesDisponiveis.contains(ingrediente)) {
 						novaPizza.adicionarIngrediente(ingrediente);
 						contador++;
 
@@ -129,10 +129,10 @@ class Main {
 				System.out.println("Qual ingrediente você deseja adicionar?");
 				String nome = sc.nextLine();
 
-				if (ingredientes.contains(new Ingrediente(nome))) {
+				if (ingredientesDisponiveis.contains(new Ingrediente(nome))) {
 					System.out.println("Esse ingrediente já existe");
 				} else {
-					ingredientes.add(new Ingrediente(nome));
+					ingredientesDisponiveis.add(new Ingrediente(nome));
 					System.out.println("Ingrediente adicionado!");
 				}
 
