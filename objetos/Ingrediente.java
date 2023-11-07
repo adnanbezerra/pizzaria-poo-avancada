@@ -29,6 +29,6 @@ public class Ingrediente {
 
 	  @Override
 	  public String toString() {
-	    return "Ingrediente: " + this.nome + ", vezes usado: " + this.vezesUsado;
+	    return "ingredientes: " + this.nome;
 	  }
 	}

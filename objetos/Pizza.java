@@ -26,7 +26,7 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		String saida = "Pizza de " + ingredientes.toString();
+		String saida = "Pizza com os " + ingredientes.toString();
 
 		return saida;
 	}
