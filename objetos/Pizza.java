@@ -1,44 +1,34 @@
 package objetos;
 
-import java.util.ArrayList;
+import listas.LinkedList;
 
 public class Pizza {
-	private ArrayList<Ingrediente> ingredientes;
+	private LinkedList<Ingrediente> ingredientes;
 	private String descricao;
 	private int codigo;
 
-	public Pizza(String descricao, int codigo, ArrayList<Ingrediente> ingredientes) {
+	public Pizza(String descricao, int codigo) {
 		this.descricao = descricao;
 		this.codigo = codigo;
-		this.ingredientes = ingredientes;
+		this.ingredientes = new LinkedList<Ingrediente>();
 	}
 
 	public void adicionarIngrediente(Ingrediente ingrediente) {
 		ingrediente.usarIngrediente();
-		this.ingredientes.add(ingrediente);
+		this.ingredientes.addLast(ingrediente);
 	}
 
 	public Ingrediente removerÚltimoIngrediente() {
-		Ingrediente ingredienteRemovendo = ingredientes.get(ingredientes.size() - 1);
-		ingredientes.get(ingredientes.size() - 1).cancelarUsoDoIngrediente();
-		this.ingredientes.remove(ingredientes.size() - 1);
+		Ingrediente ingredienteRemovendo = this.ingredientes.removeLast();
 
 		return ingredienteRemovendo;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder saida = new StringBuilder();
+		String saida = "Pizza de " + ingredientes.toString();
 
-		for (int i = 0; i < ingredientes.size(); i++) {
-			if (i == 0) {
-				saida.append("Pizza de " + ingredientes.get(i).getNome());
-			} else {
-				saida.append(", " + ingredientes.get(i).getNome());
-			}
-		}
-
-		return saida.toString();
+		return saida;
 	}
 
 	public String getDescricao() {

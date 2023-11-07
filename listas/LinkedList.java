@@ -87,7 +87,12 @@ public class LinkedList<Ingrediente> {
   
     Node<Ingrediente> temp = cabeca; 
     while (temp.proximo != null) {
-      builder.append(((objetos.Ingrediente) temp.valor).getNome());
+			if (temp.proximo == null) {
+      	builder.append(((objetos.Ingrediente) temp.valor).getNome());
+			} else {
+				builder.append(", " + ((objetos.Ingrediente) temp.valor).getNome());
+			}
+
 		}
 
 		return builder.toString();

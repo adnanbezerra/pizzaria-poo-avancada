@@ -29,14 +29,14 @@ class Main {
 			comando = sc.nextLine();
 
 			if (comando.equals("1")) {
-				// FALTA implementar a nossa Fila personalizada
+				// TODO - Falta implementar a nossa Fila personalizada
 
 				System.out.println("Os ingredientes disponíveis:");
 				for (Ingrediente pizzaIngredientes : ingredientesDisponiveis) {
 					System.out.println(pizzaIngredientes.getNome());
 				}
 
-				Pizza novaPizza = new Pizza(comando, 0, ingredientesDisponiveis);
+				Pizza novaPizza = new Pizza(comando, 0);
 
 				int contador = 0;
 				boolean adicionarMaisIngredientes = true;
@@ -77,8 +77,9 @@ class Main {
 
 			} else if (comando.equals("2")) {
 				// TODO - Falta criar nossa fila pedidos personalizada
-				System.out.println(
-						"Qual pizza você deseja pedir? Digite o código da sua pizza com base nas pizzas abaixo:");
+
+				System.out.println("Qual pizza você deseja pedir? Digite o código da sua pizza com base nas pizzas abaixo:");
+
 				for (int i = 0; i < pizzas.size(); i++) {
 					Pizza pizza = pizzas.get(i);
 					System.out.println("Pizza " + (i + 1) + ": " + pizza.toString());
@@ -104,6 +105,8 @@ class Main {
 				}
 
 			} else if (comando.equals("3")) {
+        // Servir pedido
+
 				System.out.println("Pedidos feitos:");
 				for (Pedido pizza : pedidos) {
 					System.out.println(pizza.toString());
@@ -120,10 +123,11 @@ class Main {
 
 				} else {
 					System.out.println(
-							"Não é a vez de retirar seu pedido.As pizzas sao entregues por ordem de pedido.Aguarde!");
+							"Não é a vez de retirar seu pedido. As pizzas sao entregues por ordem de pedido.Aguarde!");
 				}
 
 			} else if (comando.equals("4")) {
+        // Criar novo ingrediente
 
 				System.out.println("Qual ingrediente você deseja adicionar?");
 				String nome = sc.nextLine();
@@ -137,6 +141,7 @@ class Main {
 
 			} else if (comando.equals("5")) {
 				// TODO - Estatísticas dos pedidos
+
 			} else if (comando.equals("6")) {
 				System.out.println("Até mais ver!");
 				break;
