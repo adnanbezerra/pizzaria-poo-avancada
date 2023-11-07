@@ -1,13 +1,13 @@
 package listas;
 
-public class LinkedList<E> {
+public class LinkedList<Ingrediente> {
 		
-	private Node<E> cabeca;
-	private Node<E> cauda;
+	private Node<Ingrediente> cabeca;
+	private Node<Ingrediente> cauda;
 	private int quantidade = 0;
 		
-	public void addFirst(E valor) {
-		Node<E> novoNode = new Node<E>(valor);
+	public void addFirst(Ingrediente valor) {
+		Node<Ingrediente> novoNode = new Node<Ingrediente>(valor);
 		novoNode.proximo = cabeca;
 		cabeca = novoNode;
 
@@ -18,8 +18,8 @@ public class LinkedList<E> {
 		quantidade++;
 	}
 		
-	public void addLast(E valor) {
-		Node<E> novoNode = new Node<E>(valor);
+	public void addLast(Ingrediente valor) {
+		Node<Ingrediente> novoNode = new Node<Ingrediente>(valor);
 		if (isEmpty()) {
 			addFirst(valor);
 			return;
@@ -30,15 +30,15 @@ public class LinkedList<E> {
 		cauda = novoNode;
 	}
 		
-	public E removeFirst() {
-		Node<E> temp = cabeca;
+	public Ingrediente removeFirst() {
+		Node<Ingrediente> temp = cabeca;
 		cabeca = temp.proximo;
 		quantidade--;
 
 		return temp.valor;
 	}
 
-	public E removeLast() {
+	public Ingrediente removeLast() {
     if (cabeca == null) {
       return null; 
 		}
@@ -47,7 +47,7 @@ public class LinkedList<E> {
       return null; 
     } 
   
-    Node<E> second_last = cabeca; 
+    Node<Ingrediente> second_last = cabeca; 
     while (second_last.proximo.proximo != null) {
       second_last = second_last.proximo; 
 		}
@@ -65,21 +65,41 @@ public class LinkedList<E> {
 		return quantidade == 0;
 	}
 		
-	public E first() {
+	public Ingrediente first() {
 		return cabeca.valor;
 	}
 
-	public E getLast() {
+	public Ingrediente getLast() {
 		return cauda.valor;
 	}
-		
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		if (cabeca == null) {
+      return "Sem ingredientes"; 
+		}
+  
+    if (cabeca.proximo == null) { 
+      builder.append(cabeca.valor); 
+    } 
+  
+    Node<Ingrediente> temp = cabeca; 
+    while (temp.proximo != null) {
+      builder.append(((objetos.Ingrediente) temp.valor).getNome());
+		}
+
+		return builder.toString();
+	}
+
 }
 
-class Node<E> {
-	public E valor;
-	public Node<E> proximo = null;
+class Node<Ingrediente> {
+	public Ingrediente valor;
+	public Node<Ingrediente> proximo = null;
 		
-	public Node(E valor) {
+	public Node(Ingrediente valor) {
 		this.valor = valor;
 	}
 }
