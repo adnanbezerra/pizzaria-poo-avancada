@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
@@ -20,8 +21,8 @@ class Main {
 		ingredientesDisponiveis.add(new Ingrediente("Pepperoni"));
 		ingredientesDisponiveis.add(new Ingrediente("Frango com catupiry"));
 		ingredientesDisponiveis.add(new Ingrediente("Abacaxi"));
-		Stack<Pizza> pizzas = new Stack<Pizza>();
-		Queue<Pedido> pedidos = new LinkedList<>();
+		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
+		Queue<Pedido> pedidos = new PriorityQueue<>();
 		String comando;
 
 		System.out.println("Bem-vindo à Pizzaria!");
