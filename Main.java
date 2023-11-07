@@ -85,11 +85,11 @@ class Main {
 					System.out.println("Pizza " + (i + 1) + ": " + pizza.toString());
 				}
 
-				int pedido = sc.nextInt();
+				int pedido = Integer.parseInt(sc.nextLine());
 
 				if (pedido >= 1 && pedido <= pizzas.size()) {
 					System.out.println("Qual é o número da mesa?");
-					int numeroMesa = sc.nextInt();
+					int numeroMesa = Integer.parseInt(sc.nextLine());
 
 					if (numeroMesa >= 1) {
 						Pizza pizzaEscolhida = pizzas.get(pedido - 1);
@@ -113,7 +113,7 @@ class Main {
 				}
 
 				System.out.println("Digite o numero da mesa do seu pedido:");
-				int pedido = sc.nextInt();
+				int pedido = Integer.parseInt(sc.nextLine());
 
 				Pedido pedidoVez = pedidos.peek();
 
