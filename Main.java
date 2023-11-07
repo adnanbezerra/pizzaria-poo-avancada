@@ -1,14 +1,9 @@
-package Pizzaria;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
-import listas.Fila;
 import objetos.Ingrediente;
 import objetos.Pedido;
 import objetos.Pizza;
@@ -98,7 +93,7 @@ class Main {
 
 					if (numeroMesa >= 1) {
 						Pizza pizzaEscolhida = pizzas.get(pedido - 1);
-						Pedido novoPedido = new Pedido(numeroMesa, pizzaEscolhida);
+						Pedido novoPedido = new Pedido(pizzaEscolhida, numeroMesa);
 						pedidos.add(novoPedido);
 
 						System.out.println("Pedido adicionado.");
@@ -120,7 +115,7 @@ class Main {
 
 				Pedido pedidoVez = pedidos.peek();
 
-				if (pedidoVez.getNumeroMesa() == pedido) {
+				if (pedidoVez.getNumeroDaMesa() == pedido) {
 					Pedido pedidoServido = pedidos.poll();
 					System.out.println("Pedido entregue: " + pedidoServido);
 
