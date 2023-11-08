@@ -6,6 +6,15 @@ import java.util.Scanner;
 import objetos.Ingrediente;
 import objetos.Pedido;
 import objetos.Pizza;
+/* MEMBROS DO GRUPO:
+- Adnan Medeiros Bezerra
+- Natália Galdino Bronzeado
+- Gizele Gabriele Vidal de Sousa
+- Caio Henrique Ramos Medeiros
+- Adeval Neto Cordeiro de Albuquerque
+- Layla Kethlen Ramos Apolinario
+- Lucas Emanuel
+*/
 
 class Main {
 	public static final String TRAVESSAO = "--------------------------";
