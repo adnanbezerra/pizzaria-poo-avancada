@@ -13,7 +13,7 @@ import objetos.Pizza;
 - Caio Henrique Ramos Medeiros
 - Adeval Neto Cordeiro de Albuquerque
 - Layla Kethlen Ramos Apolinario
-- Lucas Emanuel
+- Lucas Emanuel Gomes da Silva
 */
 
 class Main {
