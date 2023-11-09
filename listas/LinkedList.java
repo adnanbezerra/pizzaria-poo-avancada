@@ -1,7 +1,5 @@
 package listas;
 
-import objetos.Pedido;
-
 public class LinkedList<Ingrediente> {
     private Node<Ingrediente> cabeca;
     private Node<Ingrediente> cauda;

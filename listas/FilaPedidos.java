@@ -1,6 +1,5 @@
 package listas;
 
-import listas.LinkedList;
 import objetos.Pedido;
 
 public class FilaPedidos {

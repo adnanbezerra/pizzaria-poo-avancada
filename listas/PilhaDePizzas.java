@@ -1,11 +1,8 @@
 package listas;
-import listas.LinkedList;
-
 import objetos.Pizza;
 
-
 public class PilhaDePizzas {
-    private listas.LinkedList<Pizza> pizzas;
+    private LinkedList<Pizza> pizzas;
 
     public PilhaDePizzas() {
         pizzas = new LinkedList<>();
@@ -22,8 +19,6 @@ public class PilhaDePizzas {
             return null;
         }
     }
-
- 
 
 	public void add(Pizza novaPizza) {
 		pizzas.addLast(novaPizza);
