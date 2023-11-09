@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import listas.FilaPedidos;
+import listas.IngredientesHashMap;
 import listas.PilhaDePizzas;
 import objetos.Ingrediente;
 import objetos.Pedido;
@@ -28,6 +29,7 @@ class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Ingrediente> ingredientesDisponiveis = new ArrayList<>();
+		IngredientesHashMap ingredientesHashMap = new IngredientesHashMap();
 		ingredientesDisponiveis.add(new Ingrediente("Pepperoni"));
 		ingredientesDisponiveis.add(new Ingrediente("Frango com catupiry"));
 		ingredientesDisponiveis.add(new Ingrediente("Abacaxi"));
