@@ -34,17 +34,18 @@ class Main {
 		FilaPedidos pedidos = new FilaPedidos();
 		String comando;
 
-		System.out.println("Bem-vindo à Pizzaria!");
+		imprimeEntreTravessao("Bem-vindo à pizzaria!");
 		while (true) {
 			listarComandos();
 			comando = sc.nextLine();
 
 			if (comando.equals("1")) {
-				// TODO - Falta implementar a nossa Fila personalizada
+				// Criar nova pizza
 
 				System.out.println("Os ingredientes disponíveis:");
 				for (String pizzaIngredientes : ingredientesDisponiveis.getKeys()) {
-					System.out.println(pizzaIngredientes);
+					String ingredientesMaiusculo = pizzaIngredientes.substring(0, 1).toUpperCase() + pizzaIngredientes.substring(1); // J + avatpoint  
+					System.out.println(ingredientesMaiusculo);
 				}
 
 				Pizza novaPizza = new Pizza(comando, 0);
@@ -72,7 +73,7 @@ class Main {
 				}
 
 				pizzas.add(novaPizza);
-				System.out.println("Pizza criada!");
+				imprimeEntreTravessao("Pizza criada!");
 
 				if (!pizzas.isEmpty()) {
 					System.out.println("Deseja remover o último ingrediente da pizza? Digite 'sim' ou 'nao':");
@@ -80,18 +81,20 @@ class Main {
 
 					if (removerConfirmacao.equals("sim")) {
 						String ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
-						System.out.println("O último ingrediente removido foi: " + ultimoIngredienteRemovido);
+						imprimeEntreTravessao("O último ingrediente removido foi: " + ultimoIngredienteRemovido);
 					}
 				}
 
-			} else if (comando.equals("2")) {
-				// TODO - Falta criar nossa fila pedidos personalizada
+				System.out.println(APERTE_ENTER);
+				sc.nextLine();
 
+			} else if (comando.equals("2")) {
+				// Criar novo pedido
 				System.out.println("Qual pizza você deseja pedir? Digite o código da sua pizza com base nas pizzas abaixo:");
 
 				for (int i = 0; i < pizzas.size(); i++) {
 					Pizza pizza = pizzas.get(i);
-					System.out.println("Pizza " + (i + 1) + ": " + pizza.toString());
+					System.out.println("Código da pizza: " + (i + 1) + ". Sabores: " + pizza.toString());
 				}
 
 				int pedido = Integer.parseInt(sc.nextLine());
@@ -105,7 +108,7 @@ class Main {
 						Pedido novoPedido = new Pedido(pizzaEscolhida, numeroMesa);
 						pedidos.adicionarPedido(novoPedido);
 
-						System.out.println("Pedido adicionado.");
+						imprimeEntreTravessao("Pedido adicionado.");
 					} else {
 						System.out.println("Número de mesa inválido.");
 					}
@@ -113,27 +116,33 @@ class Main {
 					System.out.println("Código de pizza inválido.");
 				}
 
+				System.out.println(APERTE_ENTER);
+				sc.nextLine();
+
 			} else if (comando.equals("3")) {
         // Servir pedido
-				
 
 				System.out.println("Pedidos feitos:");
 				for (int i = 0; i < pedidos.getPedidos().size(); i++) {
 				    Pedido pedido = pedidos.getPedidos().get(i);
 				    System.out.println(pedido.toString());
 				}				
-	            System.out.println("Digite o numero da mesa do seu pedido:");
+
+	      System.out.println("Digite o numero da mesa do seu pedido:");
 				int pedido = Integer.parseInt(sc.nextLine());
 
 				Pedido pedidoVez = pedidos.primeiro();
 
 				if (pedidoVez.getNumeroDaMesa() == pedido) {
 					Pedido pedidoServido = pedidos.removerPedido();
-					System.out.println("Pedido entregue: " + pedidoServido);
+					imprimeEntreTravessao("Pedido entregue: " + pedidoServido);
+					System.out.println(APERTE_ENTER);
+					sc.nextLine();
 
 				} else {
-					System.out.println(
-							"Não é a vez de retirar seu pedido. As pizzas sao entregues por ordem de pedido.Aguarde!");
+					imprimeEntreTravessao("Não é a vez de retirar seu pedido. As pizzas sao entregues por ordem de pedido. Aguarde!");
+					System.out.println(APERTE_ENTER);
+					sc.nextLine();
 				}
 
 			} else if (comando.equals("4")) {
@@ -144,9 +153,13 @@ class Main {
 
 				if (ingredientesDisponiveis.contains(nome)) {
 					System.out.println("Esse ingrediente já existe");
+					System.out.println(APERTE_ENTER);
+					sc.nextLine();
 				} else {
 					ingredientesDisponiveis.criarIngrediente(nome);
-					System.out.println("Ingrediente adicionado!");
+					imprimeEntreTravessao("Ingrediente adicionado!");
+					System.out.println(APERTE_ENTER);
+					sc.nextLine();
 				}
 
 			} else if (comando.equals("5")) {
@@ -156,7 +169,7 @@ class Main {
 				System.out.println("Até mais ver!");
 				break;
 			} else {
-				System.out.println("Insira um comando válido!");
+				imprimeEntreTravessao("Insira um comando válido!");
 			}
 
 		}
@@ -165,7 +178,6 @@ class Main {
 	}
 
 	public static void listarComandos() {
-		System.out.println(TRAVESSAO);
 		System.out.println("Lista dos comandos: ");
 		System.out.println("1. Criar nova pizza;");
 		System.out.println("2. Criar novo pedido;");
