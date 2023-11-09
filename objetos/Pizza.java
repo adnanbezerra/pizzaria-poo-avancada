@@ -4,27 +4,24 @@ import listas.LinkedList;
 
 
 public class Pizza {
-    private LinkedList<Ingrediente> ingredientes;
+    private LinkedList<String> ingredientes;
     private String descricao;
     private int codigo;
 
     public Pizza(String descricao, int codigo) {
         this.descricao = descricao;
         this.codigo = codigo;
-        this.ingredientes = new LinkedList<Ingrediente>();
+        this.ingredientes = new LinkedList<String>();
     }
 
-    public void adicionarIngrediente(Ingrediente ingrediente) {
-        ingrediente.usarIngrediente();
+    public void adicionarIngrediente(String ingrediente) {
         this.ingredientes.addLast(ingrediente);
     }
 
-    public Ingrediente removerÚltimoIngrediente() {
-        Ingrediente ingredienteRemovendo = this.ingredientes.removeLast();
+    public String removerÚltimoIngrediente() {
+        String ingredienteRemovendo = this.ingredientes.removeLast();
         return ingredienteRemovendo;
     }
-
-    
 
     @Override
     public String toString() {

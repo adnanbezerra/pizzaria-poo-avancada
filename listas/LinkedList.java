@@ -1,12 +1,12 @@
 package listas;
 
-public class LinkedList<Ingrediente> {
-    private Node<Ingrediente> cabeca;
-    private Node<Ingrediente> cauda;
+public class LinkedList<E> {
+    private Node<E> cabeca;
+    private Node<E> cauda;
     private int quantidade = 0;
 
-    public void addFirst(Ingrediente valor) {
-        Node<Ingrediente> novoNode = new Node<Ingrediente>(valor);
+    public void addFirst(E valor) {
+        Node<E> novoNode = new Node<E>(valor);
         novoNode.proximo = cabeca;
         cabeca = novoNode;
 
@@ -17,8 +17,8 @@ public class LinkedList<Ingrediente> {
         quantidade++;
     }
 
-    public void addLast(Ingrediente valor) {
-        Node<Ingrediente> novoNode = new Node<Ingrediente>(valor);
+    public void addLast(E valor) {
+        Node<E> novoNode = new Node<E>(valor);
         if (isEmpty()) {
             addFirst(valor);
             return;
@@ -29,15 +29,15 @@ public class LinkedList<Ingrediente> {
         cauda = novoNode;
     }
 
-    public Ingrediente removeFirst() {
-        Node<Ingrediente> temp = cabeca;
+    public E removeFirst() {
+        Node<E> temp = cabeca;
         cabeca = temp.proximo;
         quantidade--;
 
         return temp.valor;
     }
 
-    public Ingrediente removeLast() {
+    public E removeLast() {
         if (cabeca == null) {
             return null;
         }
@@ -46,7 +46,7 @@ public class LinkedList<Ingrediente> {
             return null;
         }
 
-        Node<Ingrediente> second_last = cabeca;
+        Node<E> second_last = cabeca;
         while (second_last.proximo.proximo != null) {
             second_last = second_last.proximo;
         }
@@ -64,11 +64,11 @@ public class LinkedList<Ingrediente> {
         return quantidade == 0;
     }
 
-    public Ingrediente first() {
+    public E first() {
         return cabeca.valor;
     }
 
-    public Ingrediente getLast() {
+    public E getLast() {
         return cauda.valor;
     }
 
@@ -84,27 +84,27 @@ public class LinkedList<Ingrediente> {
             builder.append(cabeca.valor);
         }
 
-        Node<Ingrediente> temp = cabeca;
+        Node<E> temp = cabeca;
         while (temp.proximo != null) {
             if (temp.proximo == null) {
-                builder.append(((objetos.Ingrediente) temp.valor).getNome());
+                builder.append(((String) temp.valor));
             } else {
-                builder.append(", " + ((objetos.Ingrediente) temp.valor).getNome());
+                builder.append(", " + ((String) temp.valor));
             }
         }
 
         return builder.toString();
     }
-    public Node<Ingrediente> getCabeca() {
+    public Node<E> getCabeca() {
         return cabeca;
     }
 
-		public Ingrediente get(int index) {
+		public E get(int index) {
         if (index < 0 || index >= size()) {
             return null; 
         }
 
-        Node<Ingrediente> currentNode = cabeca;
+        Node<E> currentNode = cabeca;
         for (int i = 0; i < index; i++) {
             currentNode = currentNode.proximo;
         }
@@ -114,23 +114,23 @@ public class LinkedList<Ingrediente> {
 
 }
 
-class Node<Ingrediente> {
-    public Ingrediente valor;
-    public Node<Ingrediente> proximo = null;
+class Node<E> {
+    public E valor;
+    public Node<E> proximo = null;
 
-    public Node(Ingrediente valor) {
+    public Node(E valor) {
         this.valor = valor;
     }
 
-    public Node<Ingrediente> getProximo() {
+    public Node<E> getProximo() {
         return proximo;
     }
 
-    public void setProximo(Node<Ingrediente> proximo) {
+    public void setProximo(Node<E> proximo) {
         this.proximo = proximo;
     }
 
-    public Ingrediente getValor() {
+    public E getValor() {
         return valor;
     }
 }

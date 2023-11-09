@@ -10,13 +10,11 @@ package Pizzaria;
 - Lucas Emanuel Gomes da Silva
 */
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import listas.FilaPedidos;
 import listas.IngredientesHashMap;
 import listas.PilhaDePizzas;
-import objetos.Ingrediente;
 import objetos.Pedido;
 import objetos.Pizza;
 
@@ -28,11 +26,10 @@ class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ArrayList<Ingrediente> ingredientesDisponiveis = new ArrayList<>();
-		IngredientesHashMap ingredientesHashMap = new IngredientesHashMap();
-		ingredientesDisponiveis.add(new Ingrediente("Pepperoni"));
-		ingredientesDisponiveis.add(new Ingrediente("Frango com catupiry"));
-		ingredientesDisponiveis.add(new Ingrediente("Abacaxi"));
+		IngredientesHashMap ingredientesDisponiveis = new IngredientesHashMap();
+		ingredientesDisponiveis.criarIngrediente("Pepperoni");
+		ingredientesDisponiveis.criarIngrediente("Frango com bacon");
+		ingredientesDisponiveis.criarIngrediente("Abacaxi");
 		PilhaDePizzas pizzas = new PilhaDePizzas();
 		FilaPedidos pedidos = new FilaPedidos();
 		String comando;
@@ -46,8 +43,8 @@ class Main {
 				// TODO - Falta implementar a nossa Fila personalizada
 
 				System.out.println("Os ingredientes disponíveis:");
-				for (Ingrediente pizzaIngredientes : ingredientesDisponiveis) {
-					System.out.println(pizzaIngredientes.getNome());
+				for (String pizzaIngredientes : ingredientesDisponiveis.getKeys()) {
+					System.out.println(pizzaIngredientes);
 				}
 
 				Pizza novaPizza = new Pizza(comando, 0);
@@ -59,10 +56,8 @@ class Main {
 					System.out.println("Digite um ingrediente, dentre os disponíveis: ");
 					String entradaDoUsuario = sc.nextLine();
 
-					Ingrediente ingrediente = new Ingrediente(entradaDoUsuario);
-
-					if (ingredientesDisponiveis.contains(ingrediente)) {
-						novaPizza.adicionarIngrediente(ingrediente);
+					if (ingredientesDisponiveis.contains(entradaDoUsuario)) {
+						novaPizza.adicionarIngrediente(entradaDoUsuario);
 						contador++;
 
 						System.out.println("Deseja adicionar mais algum ingrediente? Digite 'sim' ou 'nao':");
@@ -84,8 +79,8 @@ class Main {
 					String removerConfirmacao = sc.nextLine();
 
 					if (removerConfirmacao.equals("sim")) {
-						Ingrediente ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
-						System.out.println("O último ingrediente removido foi: " + ultimoIngredienteRemovido.getNome());
+						String ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
+						System.out.println("O último ingrediente removido foi: " + ultimoIngredienteRemovido);
 					}
 				}
 
@@ -147,10 +142,10 @@ class Main {
 				System.out.println("Qual ingrediente você deseja adicionar?");
 				String nome = sc.nextLine();
 
-				if (ingredientesDisponiveis.contains(new Ingrediente(nome))) {
+				if (ingredientesDisponiveis.contains(nome)) {
 					System.out.println("Esse ingrediente já existe");
 				} else {
-					ingredientesDisponiveis.add(new Ingrediente(nome));
+					ingredientesDisponiveis.criarIngrediente(nome);
 					System.out.println("Ingrediente adicionado!");
 				}
 

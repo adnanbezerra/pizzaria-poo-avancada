@@ -1,7 +1,10 @@
 package listas;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
 public class IngredientesHashMap {
   private HashMap<String, Integer> hashMap;
@@ -10,11 +13,11 @@ public class IngredientesHashMap {
     this.hashMap = new HashMap<>();
   }
 
-  public void criaIngrediente(String nome) {
+  public void criarIngrediente(String nome) {
     hashMap.put(nome.toLowerCase(), null);
   }
 
-  public void usaIngrediente(String nome) {
+  public void usarIngrediente(String nome) {
     if (hashMap.containsKey(nome.toLowerCase())) {
       hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
     }
@@ -30,14 +33,14 @@ public class IngredientesHashMap {
     return "Nome: " + nome.toLowerCase() + ", vezes utilizado: " + this.hashMap.get(nome.toLowerCase());
   }
 
-  public String getMaisUsado() {
+  public Entry<String, Integer> getMaisUsado() {
     int contador = 0;
-    String maisUsado = "";
+    Entry<String, Integer> maisUsado = new AbstractMap.SimpleEntry<String, Integer>("", 0);
 
     for (var each : this.hashMap.entrySet()) {
       if(each.getValue() > contador) {
         contador = each.getValue();
-        maisUsado = each.getKey();
+        maisUsado = each;
       }
     }
 
@@ -54,5 +57,13 @@ public class IngredientesHashMap {
     }
     
     return naoUsados;
+  }
+
+  public boolean contains(String ingrediente) {
+    return this.hashMap.containsKey(ingrediente);
+  }
+
+  public Set<String> getKeys() {
+    return this.hashMap.keySet();
   }
 }
