@@ -1,5 +1,7 @@
 package listas;
 
+import java.util.ArrayList;
+
 public class LinkedList<E> {
     private Node<E> cabeca;
     private Node<E> cauda;
@@ -35,6 +37,25 @@ public class LinkedList<E> {
         quantidade--;
 
         return temp.valor;
+    }
+
+    public ArrayList<E> getValues() {
+        ArrayList<E> values = new ArrayList<>();
+
+        if (cabeca.proximo == null) {
+            values.add(cabeca.valor);
+        }
+
+        Node<E> temp = cabeca;
+        while (temp.proximo != null) {
+            if (temp.proximo == null) {
+                values.add((temp.valor));
+            } else {
+                values.add(temp.valor);
+            }
+        }
+
+        return values;
     }
 
     public E removeLast() {

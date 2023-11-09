@@ -1,5 +1,7 @@
 package Pizzaria;
 
+import java.util.ArrayList;
+
 /* MEMBROS DO GRUPO:
 - Adnan Medeiros Bezerra
 - Natália Galdino Bronzeado
@@ -105,6 +107,9 @@ class Main {
 
 					if (numeroMesa >= 1) {
 						Pizza pizzaEscolhida = pizzas.get(pedido - 1);
+						ArrayList<String> sabores = pizzaEscolhida.getSabores();
+						ingredientesDisponiveis.usarIngredientes(sabores);
+						
 						Pedido novoPedido = new Pedido(pizzaEscolhida, numeroMesa);
 						pedidos.adicionarPedido(novoPedido);
 

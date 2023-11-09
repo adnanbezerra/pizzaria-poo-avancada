@@ -17,15 +17,11 @@ public class IngredientesHashMap {
     hashMap.put(nome.toLowerCase(), null);
   }
 
-  public void usarIngrediente(String nome) {
-    if (hashMap.containsKey(nome.toLowerCase())) {
-      hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
-    }
-  }
-
-  public void cancelarUsoDoIngrediente(String nome) {
-    if (hashMap.containsKey(nome.toLowerCase())) {
-      hashMap.put(nome.toLowerCase(), hashMap.get(nome) - 1);
+  public void usarIngredientes(ArrayList<String> nomes) {
+    for (String nome : nomes) { 
+      if (hashMap.containsKey(nome.toLowerCase())) {
+        hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
+      }   
     }
   }
 

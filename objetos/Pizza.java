@@ -1,5 +1,7 @@
 package objetos;
 
+import java.util.ArrayList;
+
 import listas.LinkedList;
 
 
@@ -21,6 +23,10 @@ public class Pizza {
     public String removerÚltimoIngrediente() {
         String ingredienteRemovendo = this.ingredientes.removeLast();
         return ingredienteRemovendo;
+    }
+
+    public ArrayList<String> getSabores() {
+        return this.ingredientes.getValues();
     }
 
     @Override
