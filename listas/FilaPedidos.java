@@ -1,7 +1,6 @@
 package listas;
 
 import objetos.Pedido;
-import objetos.Pizza;
 
 public class FilaPedidos {
     private listas.LinkedList<Pedido> pedidos;
@@ -26,10 +25,15 @@ public class FilaPedidos {
         return pedidos.isEmpty();
     }
 
+    public int getQuantidadeDePedidos() {
+        return this.pedidos.size();
+    }
+
     public Pedido primeiro() {
         return pedidos.first();
     }
-    public listas.LinkedList<Pedido> getPedidos() {
+
+    public LinkedList<Pedido> getPedidos() {
         return pedidos;
     }
 }

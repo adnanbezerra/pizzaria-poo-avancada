@@ -20,9 +20,7 @@ public class IngredientesHashMap {
 
   public void usarIngredientes(ArrayList<String> nomes) {
     for (String nome : nomes) { 
-      if (hashMap.containsKey(nome.toLowerCase())) {
-        hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
-      } 
+      hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
     }
   }
 
@@ -31,7 +29,7 @@ public class IngredientesHashMap {
   }
 
   public Entry<String, Integer> getMaisUsado() {
-    int contador = 0;
+    int contador = Integer.MIN_VALUE;
     Entry<String, Integer> maisUsado = new AbstractMap.SimpleEntry<String, Integer>("", 0);
 
     for (var each : this.hashMap.entrySet()) {

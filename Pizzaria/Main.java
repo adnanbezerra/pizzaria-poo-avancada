@@ -13,6 +13,7 @@ import java.util.ArrayList;
 */
 
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 import listas.FilaPedidos;
 import listas.IngredientesHashMap;
@@ -34,6 +35,7 @@ class Main {
 		ingredientesDisponiveis.criarIngrediente("Abacaxi");
 		PilhaDePizzas pizzas = new PilhaDePizzas();
 		FilaPedidos pedidos = new FilaPedidos();
+		ArrayList<Pedido> pedidosServidos = new ArrayList<>();
 		String comando;
 
 		imprimeEntreTravessao("Bem-vindo à pizzaria!");
@@ -46,7 +48,7 @@ class Main {
 
 				System.out.println("Os ingredientes disponíveis:");
 				for (String pizzaIngredientes : ingredientesDisponiveis.getKeys()) {
-					String ingredientesMaiusculo = pizzaIngredientes.substring(0, 1).toUpperCase() + pizzaIngredientes.substring(1); // J + avatpoint  
+					String ingredientesMaiusculo = pizzaIngredientes.substring(0, 1).toUpperCase() + pizzaIngredientes.substring(1);
 					System.out.println(ingredientesMaiusculo);
 				}
 
@@ -142,6 +144,7 @@ class Main {
 				if (pedidoVez.getNumeroDaMesa() == pedido) {
 					Pedido pedidoServido = pedidos.removerPedido();
 					imprimeEntreTravessao("Pedido entregue: " + pedidoServido);
+					pedidosServidos.add(pedidoServido);
 					System.out.println(APERTE_ENTER);
 					sc.nextLine();
 
@@ -169,7 +172,37 @@ class Main {
 				}
 
 			} else if (comando.equals("5")) {
-				// TODO - Estatísticas dos pedidos
+				// Estatísticas dos pedidos
+				System.out.println(TRAVESSAO);
+
+				System.out.println("Quantidade de pizzas servidas: ");
+				int quantidadeDePedidos = pedidosServidos.size();
+				if (quantidadeDePedidos == 0) {
+					System.out.println("Nenhuma pizza pedida ainda");
+				} else {
+					if (quantidadeDePedidos == 1) {
+						System.out.println(quantidadeDePedidos + " pizza foi servida.");
+					} else {
+						System.out.println(quantidadeDePedidos + " pizzas foram servidas.");
+					}
+					
+				}
+
+				System.out.println(TRAVESSAO);
+
+				double mediaDeIngredientes = getMediaDeIngredientes(pedidosServidos, pedidos);
+				System.out.println("Média de sabores de pizza: " + mediaDeIngredientes);
+
+				Entry<String, Integer> saborMaisPedido = ingredientesDisponiveis.getMaisUsado();
+				System.out.println("Sabor de pizza mais pedido: " + saborMaisPedido.getKey() + ". Quantidade de pedidos: " + saborMaisPedido.getValue());
+				
+				String saboresNaoPedidos = ingredientesDisponiveis.getNaoUsados();
+				System.out.println("Sabores não pedidos: " + saboresNaoPedidos.toString());
+
+				System.out.println(TRAVESSAO);
+
+				System.out.println(APERTE_ENTER);
+				sc.nextLine();
 
 			} else if (comando.equals("6")) {
 				System.out.println("Até mais ver!");
@@ -199,6 +232,21 @@ class Main {
 		System.out.println(TRAVESSAO);
 		System.out.println(imprimir);
 		System.out.println(TRAVESSAO);
+	}
+
+	public static double getMediaDeIngredientes(ArrayList<Pedido> pedidos, FilaPedidos pedidosAtivos) {
+		double media = 1;
+
+		for (Pedido each : pedidos) {
+				media = (each.getPizza().getSabores().size() + media) / 2;
+		}
+
+		for (int i = 0; i < pedidosAtivos.getPedidos().size(); i++) {
+			Pedido pedido = pedidosAtivos.getPedidos().get(i);
+			media = (media + pedido.getPizza().getSabores().size()) / 2;
+		}
+
+		return media;
 	}
 
 	public static int lerNumeroNaoNegativo(Scanner sc) {

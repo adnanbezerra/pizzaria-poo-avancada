@@ -42,18 +42,10 @@ public class LinkedList<E> {
     public ArrayList<E> getValues() {
         ArrayList<E> values = new ArrayList<>();
 
-        if (cabeca.proximo == null) {
-            values.add(cabeca.valor);
-        }
-
         Node<E> temp = cabeca;
-        while (temp.proximo != null) {
-            if (temp.proximo == null) {
-                values.add((temp.valor));
-            } else {
-                values.add(temp.valor);
-            }
-
+        while (temp != null) {
+            values.add(temp.valor);
+        
             temp = temp.proximo;
         }
 
