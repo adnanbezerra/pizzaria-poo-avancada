@@ -45,4 +45,22 @@ public class PilhaDePizzas {
 
         return currentNode.getValor();
     }
+
+	public void remove(Pizza pizzaRemover) {
+	    Node<Pizza> noAtual = pizzas.getCabeca();
+	    Node<Pizza> noAnterior = null;
+	    while (noAtual != null) {
+	        if (noAtual.getValor().equals(pizzaRemover)) {
+	            if (noAnterior == null) {
+	                pizzas.removeFirst();
+	            } else {
+	                noAnterior.setProximo(noAtual.getProximo());
+	            }
+	            return;
+	        }
+	        noAnterior = noAtual;
+	        noAtual = noAtual.getProximo();
+	    }
+	    System.out.println("Pizza não encontrada na pilha.");
+	}	
 }
