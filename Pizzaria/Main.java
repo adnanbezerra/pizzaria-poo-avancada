@@ -44,56 +44,57 @@ class Main {
 			comando = sc.nextLine();
 
 			if (comando.equals("1")) {
-				// Criar nova pizza
-
 				System.out.println("Os ingredientes disponíveis:");
 				for (String pizzaIngredientes : ingredientesDisponiveis.getKeys()) {
-					String ingredientesMaiusculo = pizzaIngredientes.substring(0, 1).toUpperCase() + pizzaIngredientes.substring(1);
-					System.out.println(ingredientesMaiusculo);
+				    String ingredientesMaiusculo = pizzaIngredientes.substring(0, 1).toUpperCase() + pizzaIngredientes.substring(1);
+				    System.out.println(ingredientesMaiusculo);
 				}
-
 				Pizza novaPizza = new Pizza(comando, 0);
-
 				int contador = 0;
 				boolean adicionarMaisIngredientes = true;
-
-				while (contador < 4 && adicionarMaisIngredientes) {
-					System.out.println("Digite um ingrediente, dentre os disponíveis: ");
-					String entradaDoUsuario = sc.nextLine();
-
-					if (ingredientesDisponiveis.contains(entradaDoUsuario)) {
-						novaPizza.adicionarIngrediente(entradaDoUsuario);
-						contador++;
-
-						System.out.println("Deseja adicionar mais algum ingrediente? Digite 'sim' ou 'nao':");
-						String confirmacao = sc.nextLine();
-
-						if (confirmacao.equals("nao")) {
-							adicionarMaisIngredientes = false;
-						}
-					} else {
-						System.out.println("Ingrediente inválido. Tente novamente.");
-					}
+				while (contador < 5 && adicionarMaisIngredientes) {
+				    System.out.println("Digite um ingrediente, dentre os disponíveis: ");
+				    String entradaDoUsuario = sc.nextLine();
+				    if (ingredientesDisponiveis.contains(entradaDoUsuario)) {
+				        novaPizza.adicionarIngrediente(entradaDoUsuario);
+				        contador++;
+				        if (contador < 5) { 
+				            System.out.println("Deseja adicionar mais algum ingrediente? Digite 'sim' ou 'nao':");
+				            String confirmacao = sc.nextLine();
+				            if (confirmacao.equals("nao")) {
+				                adicionarMaisIngredientes = false;
+				            }
+				        }
+				    } else {
+				        System.out.println("Ingrediente inválido. Tente novamente.");
+				    }
 				}
-
 				pizzas.add(novaPizza);
 				imprimeEntreTravessao("Pizza criada!");
-
 				if (!pizzas.isEmpty()) {
-					System.out.println("Deseja remover o último ingrediente da pizza? Digite 'sim' ou 'nao':");
-					String removerConfirmacao = sc.nextLine();
-
-					if (removerConfirmacao.equals("sim")) {
-						String ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
-						imprimeEntreTravessao("O último ingrediente removido foi: " + ultimoIngredienteRemovido);
-					}
+				    if (novaPizza.getIngredientes().size() == 1) {
+				        System.out.println("Você tem apenas um ingrediente. Deseja cancelar essa pizza? Digite 'sim' ou 'nao':");
+				        String cancelarConfirmacao = sc.nextLine();
+				        if (cancelarConfirmacao.equals("sim")) {
+				            pizzas.remove(novaPizza);
+				            imprimeEntreTravessao("Pizza cancelada.");
+				        }
+				    } else {
+				        if (contador <= 5) { 
+				            System.out.println("Deseja remover o último ingrediente da pizza? Digite 'sim' ou 'nao':");
+				            String removerConfirmacao = sc.nextLine();
+				            if (removerConfirmacao.equals("sim")) {
+				                String ultimoIngredienteRemovido = novaPizza.removerÚltimoIngrediente();
+				                imprimeEntreTravessao("O último ingrediente removido foi: " + ultimoIngredienteRemovido);
+				            }
+				        }
+				    }
 				}
-
 				System.out.println("Processo terminado.");
 				System.out.println(APERTE_ENTER);
 				sc.nextLine();
-
-			} else if (comando.equals("2")) {
+			   
+				} else if (comando.equals("2")) {
 				// Criar novo pedido
 				System.out.println("Qual pizza você deseja pedir? Digite o código da sua pizza com base nas pizzas abaixo:");
 
@@ -102,11 +103,11 @@ class Main {
 					System.out.println("Código da pizza: " + (i + 1) + ". Sabores: " + pizza.toString());
 				}
 
-				int pedido = Integer.parseInt(sc.nextLine());
+				int pedido = lerNumeroNaoNegativo(sc);
 
 				if (pedido >= 1 && pedido <= pizzas.size()) {
 					System.out.println("Qual é o número da mesa?");
-					int numeroMesa = Integer.parseInt(sc.nextLine());
+					int numeroMesa = lerNumeroNaoNegativo(sc);
 
 					if (numeroMesa >= 1) {
 						Pizza pizzaEscolhida = pizzas.get(pedido - 1);
@@ -137,7 +138,7 @@ class Main {
 				}				
 
 	      System.out.println("Digite o numero da mesa do seu pedido:");
-				int pedido = Integer.parseInt(sc.nextLine());
+				int pedido = lerNumeroNaoNegativo(sc);
 
 				Pedido pedidoVez = pedidos.primeiro();
 
