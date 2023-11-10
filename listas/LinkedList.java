@@ -53,6 +53,8 @@ public class LinkedList<E> {
             } else {
                 values.add(temp.valor);
             }
+
+            temp = temp.proximo;
         }
 
         return values;
@@ -106,15 +108,21 @@ public class LinkedList<E> {
         }
 
         Node<E> temp = cabeca;
-        while (temp.proximo != null) {
+        while (temp != null) {
+            System.out.println(temp);
+            System.out.println(temp.valor);
+
             if (temp.proximo == null) {
-                builder.append(((String) temp.valor));
+                builder.append(((String) temp.valor + " "));
             } else {
-                builder.append(", " + ((String) temp.valor));
+                builder.append(((String) temp.valor + ", "));
             }
+
+            temp = temp.proximo;
         }
 
         return builder.toString();
+
     }
     public Node<E> getCabeca() {
         return cabeca;

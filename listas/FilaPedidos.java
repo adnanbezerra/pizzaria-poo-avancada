@@ -1,6 +1,7 @@
 package listas;
 
 import objetos.Pedido;
+import objetos.Pizza;
 
 public class FilaPedidos {
     private listas.LinkedList<Pedido> pedidos;

@@ -14,14 +14,14 @@ public class IngredientesHashMap {
   }
 
   public void criarIngrediente(String nome) {
-    hashMap.put(nome.toLowerCase(), null);
+    hashMap.put(nome.toLowerCase(), 0);
   }
 
   public void usarIngredientes(ArrayList<String> nomes) {
     for (String nome : nomes) { 
       if (hashMap.containsKey(nome.toLowerCase())) {
         hashMap.put(nome.toLowerCase(), hashMap.get(nome) + 1);
-      }   
+      } 
     }
   }
 
