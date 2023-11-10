@@ -54,7 +54,7 @@ class Main {
 				boolean adicionarMaisIngredientes = true;
 				while (contador < 5 && adicionarMaisIngredientes) {
 				    System.out.println("Digite um ingrediente, dentre os disponíveis: ");
-				    String entradaDoUsuario = sc.nextLine();
+				    String entradaDoUsuario = sc.nextLine().toLowerCase();
 				    if (ingredientesDisponiveis.contains(entradaDoUsuario)) {
 				        novaPizza.adicionarIngrediente(entradaDoUsuario);
 				        contador++;
@@ -132,11 +132,14 @@ class Main {
         // Servir pedido
 
 				System.out.println("Pedidos feitos:");
+				if (pedidos.estaVazia()) {
+					System.out.println("Não há pedidos a serem servidos. Por favor, crie um novo pedido.");
+				}
+				else {
 				for (int i = 0; i < pedidos.getPedidos().size(); i++) {
 				    Pedido pedido = pedidos.getPedidos().get(i);
 				    System.out.println(pedido.toString());
 				}				
-
 	      System.out.println("Digite o numero da mesa do seu pedido:");
 				int pedido = lerNumeroNaoNegativo(sc);
 
@@ -146,15 +149,13 @@ class Main {
 					Pedido pedidoServido = pedidos.removerPedido();
 					imprimeEntreTravessao("Pedido entregue: " + pedidoServido);
 					pedidosServidos.add(pedidoServido);
-					System.out.println(APERTE_ENTER);
-					sc.nextLine();
 
 				} else {
 					imprimeEntreTravessao("Não é a vez de retirar seu pedido. As pizzas sao entregues por ordem de pedido. Aguarde!");
+				}
 					System.out.println(APERTE_ENTER);
 					sc.nextLine();
 				}
-
 			} else if (comando.equals("4")) {
         // Criar novo ingrediente
 
@@ -192,7 +193,7 @@ class Main {
 				System.out.println(TRAVESSAO);
 
 				double mediaDeIngredientes = getMediaDeIngredientes(pedidosServidos, pedidos);
-				System.out.println("Média de sabores de pizza: " + mediaDeIngredientes);
+				System.out.printf("Média de sabores de pizza: " + mediaDeIngredientes);
 
 				Entry<String, Integer> saborMaisPedido = ingredientesDisponiveis.getMaisUsado();
 				System.out.println("Sabor de pizza mais pedido: " + saborMaisPedido.getKey() + ". Quantidade de pedidos: " + saborMaisPedido.getValue());
