@@ -3,6 +3,7 @@ package objetos;
 import java.util.ArrayList;
 
 import listas.LinkedList;
+import listas.PilhaDePizzas;
 
 
 public class Pizza {
@@ -28,18 +29,23 @@ public class Pizza {
     public ArrayList<String> getSabores() {
         return this.ingredientes.getValues();
     }
-
+    
     @Override
     public String toString() {
         String saida = "Pizza de " + ingredientes.toString();
         return saida;
     }
 
-    public String getDescricao() {
+      public String getDescricao() {
         return descricao;
     }
 
     public int getCodigo() {
         return codigo;
     }
-}
+    
+    public LinkedList<String> getIngredientes() {
+        return this.ingredientes;
+    }
+
+	}
