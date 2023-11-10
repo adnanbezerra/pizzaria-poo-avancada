@@ -4,6 +4,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.Map.Entry;
 
 public class IngredientesHashMap {
@@ -43,7 +44,7 @@ public class IngredientesHashMap {
     return maisUsado;
   }
 
-  public ArrayList<String> getNaoUsados() {
+  public String getNaoUsados() {
     ArrayList<String> naoUsados = new ArrayList<>();
 
     for (var each : this.hashMap.entrySet()) {
@@ -51,8 +52,10 @@ public class IngredientesHashMap {
           naoUsados.add(each.getKey());
         }
     }
+
+    String result = naoUsados.stream().collect(Collectors.joining(", "));
     
-    return naoUsados;
+    return result.substring(0, 1).toUpperCase() + result.substring(1);
   }
 
   public boolean contains(String ingrediente) {
