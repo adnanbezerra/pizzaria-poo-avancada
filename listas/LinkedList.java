@@ -103,15 +103,8 @@ public class LinkedList<E> {
             return "Sem ingredientes";
         }
 
-        if (cabeca.proximo == null) {
-            builder.append(cabeca.valor);
-        }
-
         Node<E> temp = cabeca;
         while (temp != null) {
-            System.out.println(temp);
-            System.out.println(temp.valor);
-
             if (temp.proximo == null) {
                 builder.append(((String) temp.valor + " "));
             } else {
@@ -124,11 +117,12 @@ public class LinkedList<E> {
         return builder.toString();
 
     }
+
     public Node<E> getCabeca() {
         return cabeca;
     }
 
-		public E get(int index) {
+	public E get(int index) {
         if (index < 0 || index >= size()) {
             return null; 
         }
