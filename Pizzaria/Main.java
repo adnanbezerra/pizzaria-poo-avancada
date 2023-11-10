@@ -87,6 +87,7 @@ class Main {
 					}
 				}
 
+				System.out.println("Processo terminado.");
 				System.out.println(APERTE_ENTER);
 				sc.nextLine();
 
