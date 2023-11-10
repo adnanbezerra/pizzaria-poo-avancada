@@ -1,6 +1,7 @@
-package Pizzaria;
+package pizzaria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /* MEMBROS DO GRUPO:
 - Adnan Medeiros Bezerra
@@ -193,13 +194,13 @@ class Main {
 				System.out.println(TRAVESSAO);
 
 				double mediaDeIngredientes = getMediaDeIngredientes(pedidosServidos, pedidos);
-				System.out.printf("Média de sabores de pizza: " + mediaDeIngredientes);
+				System.out.printf("Média de sabores de pizza: %.2f%n", mediaDeIngredientes);
 
 				Entry<String, Integer> saborMaisPedido = ingredientesDisponiveis.getMaisUsado();
 				System.out.println("Sabor de pizza mais pedido: " + saborMaisPedido.getKey() + ". Quantidade de pedidos: " + saborMaisPedido.getValue());
 				
 				String saboresNaoPedidos = ingredientesDisponiveis.getNaoUsados();
-				System.out.println("Sabores não pedidos: " + saboresNaoPedidos.toString());
+				System.out.println("Sabores não pedidos: " + saboresNaoPedidos);
 
 				System.out.println(TRAVESSAO);
 
@@ -236,7 +237,7 @@ class Main {
 		System.out.println(TRAVESSAO);
 	}
 
-	public static double getMediaDeIngredientes(ArrayList<Pedido> pedidos, FilaPedidos pedidosAtivos) {
+	public static double getMediaDeIngredientes(List<Pedido> pedidos, FilaPedidos pedidosAtivos) {
 		double media = 1;
 
 		for (Pedido each : pedidos) {
